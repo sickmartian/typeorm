@@ -67,8 +67,6 @@ export class Post {
     @Column("alphanum")
     alphanum: string;
 
-    @Column("text")
-    text: string;
 
     @Column("shorttext")
     shorttext: string;

@@ -44,7 +44,6 @@ describe("database schema > column types > sap", () => {
         post.varchar = "This is varchar";
         post.nvarchar = "This is nvarchar";
         post.alphanum = "This is alphanum";
-        post.text = "This is text";
         post.shorttext = "This is shorttext";
         post.dateObj = new Date();
         post.date = "2017-06-21";
@@ -82,7 +81,6 @@ describe("database schema > column types > sap", () => {
         loadedPost.varchar.should.be.equal(post.varchar);
         loadedPost.nvarchar.should.be.equal(post.nvarchar);
         loadedPost.alphanum.should.be.equal(post.alphanum);
-        loadedPost.text.should.be.equal(post.text);
         loadedPost.shorttext.should.be.equal(post.shorttext);
         loadedPost.dateObj.should.be.equal(DateUtils.mixedDateToDateString(post.dateObj));
         loadedPost.date.should.be.equal(post.date);
@@ -116,7 +114,6 @@ describe("database schema > column types > sap", () => {
         table!.findColumnByName("varchar")!.type.should.be.equal("varchar");
         table!.findColumnByName("nvarchar")!.type.should.be.equal("nvarchar");
         table!.findColumnByName("alphanum")!.type.should.be.equal("alphanum");
-        table!.findColumnByName("text")!.type.should.be.equal("text");
         table!.findColumnByName("shorttext")!.type.should.be.equal("shorttext");
         table!.findColumnByName("dateObj")!.type.should.be.equal("date");
         table!.findColumnByName("date")!.type.should.be.equal("date");
@@ -129,7 +126,7 @@ describe("database schema > column types > sap", () => {
         table!.findColumnByName("nclob")!.type.should.be.equal("nclob");
         table!.findColumnByName("boolean")!.type.should.be.equal("boolean");
         table!.findColumnByName("varbinary")!.type.should.be.equal("varbinary");
-        table!.findColumnByName("simpleArray")!.type.should.be.equal("text");
+        table!.findColumnByName("simpleArray")!.type.should.be.equal("nclob");
     })));
 
     it("all types should work correctly - persist and hydrate when options are specified on columns", () => Promise.all(connections.map(async connection => {

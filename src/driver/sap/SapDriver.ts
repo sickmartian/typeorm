@@ -95,7 +95,6 @@ export class SapDriver implements Driver {
         "nchar",
         "varchar",
         "nvarchar",
-        "text",
         "alphanum",
         "shorttext",
         "array",
@@ -161,7 +160,7 @@ export class SapDriver implements Driver {
         cacheTime: "bigint",
         cacheDuration: "integer",
         cacheQuery: "nvarchar(5000)" as any,
-        cacheResult: "text",
+        cacheResult: "nclob",
         metadataType: "nvarchar",
         metadataDatabase: "nvarchar",
         metadataSchema: "nvarchar",
@@ -444,7 +443,7 @@ export class SapDriver implements Driver {
             return "nvarchar";
 
         } else if (column.type === "simple-array" || column.type === "simple-json") {
-            return "text";
+            return "nclob";
 
         } else if (column.type === "simple-enum") {
             return "nvarchar";

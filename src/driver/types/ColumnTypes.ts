@@ -66,8 +66,6 @@ export type WithLengthColumnType = "character varying" // postgres, cockroachdb
     |"national char" // mysql
     |"varchar2" // oracle
     |"nvarchar2" // oracle, sqlite
-    |"alphanum" // sap
-    |"shorttext" // sap
     |"raw" // oracle
     |"binary" // mssql
     |"varbinary" // mssql, sap
@@ -114,14 +112,12 @@ export type SimpleColumnType =
     |"mediumblob" // mysql
     |"mediumtext" // mysql
     |"blob" // mysql, oracle, sqlite, cockroachdb, sap
-    |"text" // mysql, postgres, mssql, sqlite, cockroachdb, sap
+    |"text" // mysql, postgres, mssql, sqlite, cockroachdb
     |"ntext" // mssql
     |"citext" // postgres
     |"hstore" // postgres
     |"longblob" // mysql
     |"longtext" // mysql
-    |"alphanum" // sap
-    |"shorttext" // sap
     |"bytes" // cockroachdb
     |"bytea" // postgres, cockroachdb
     |"long" // oracle

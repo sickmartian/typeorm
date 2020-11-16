@@ -95,8 +95,6 @@ export class SapDriver implements Driver {
         "nchar",
         "varchar",
         "nvarchar",
-        "alphanum",
-        "shorttext",
         "array",
         "varbinary",
         "blob",
@@ -120,8 +118,6 @@ export class SapDriver implements Driver {
     withLengthColumnTypes: ColumnType[] = [
         "varchar",
         "nvarchar",
-        "alphanum",
-        "shorttext",
         "varbinary"
     ];
 
@@ -178,7 +174,6 @@ export class SapDriver implements Driver {
         "nchar": { length: 1 },
         "varchar": { length: 255 },
         "nvarchar": { length: 255 },
-        "shorttext": { length: 255 },
         "varbinary": { length: 255 },
         "decimal": { precision: 18, scale: 0 },
     };
@@ -496,11 +491,8 @@ export class SapDriver implements Driver {
         switch (column.type) {
             case "varchar":
             case "nvarchar":
-            case "shorttext":
             case String:
                 return "255";
-            case "alphanum":
-                return "127";
             case "varbinary":
                 return "255";
         }

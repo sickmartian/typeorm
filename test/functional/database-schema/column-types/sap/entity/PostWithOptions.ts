@@ -28,10 +28,4 @@ export class PostWithOptions {
     @Column("nvarchar", { length: 50 })
     nvarchar: string;
 
-    @Column("alphanum", { length: 50 })
-    alphanum: string;
-
-    @Column("shorttext", { length: 50 })
-    shorttext: string;
-
 }

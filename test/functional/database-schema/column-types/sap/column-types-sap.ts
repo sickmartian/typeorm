@@ -43,8 +43,6 @@ describe("database schema > column types > sap", () => {
         post.nchar = "A";
         post.varchar = "This is varchar";
         post.nvarchar = "This is nvarchar";
-        post.alphanum = "This is alphanum";
-        post.shorttext = "This is shorttext";
         post.dateObj = new Date();
         post.date = "2017-06-21";
         post.timeObj = new Date();
@@ -80,8 +78,6 @@ describe("database schema > column types > sap", () => {
         loadedPost.nchar.should.be.equal(post.nchar);
         loadedPost.varchar.should.be.equal(post.varchar);
         loadedPost.nvarchar.should.be.equal(post.nvarchar);
-        loadedPost.alphanum.should.be.equal(post.alphanum);
-        loadedPost.shorttext.should.be.equal(post.shorttext);
         loadedPost.dateObj.should.be.equal(DateUtils.mixedDateToDateString(post.dateObj));
         loadedPost.date.should.be.equal(post.date);
         loadedPost.timeObj.valueOf().should.be.equal(DateUtils.mixedTimeToString(post.timeObj));
@@ -109,12 +105,10 @@ describe("database schema > column types > sap", () => {
         table!.findColumnByName("real")!.type.should.be.equal("real");
         table!.findColumnByName("double")!.type.should.be.equal("double");
         table!.findColumnByName("float")!.type.should.be.equal("double");
-        table!.findColumnByName("char")!.type.should.be.equal("char");
+        table!.findColumnByName("char")!.type.should.be.equal("nchar"); // alias
         table!.findColumnByName("nchar")!.type.should.be.equal("nchar");
-        table!.findColumnByName("varchar")!.type.should.be.equal("varchar");
+        table!.findColumnByName("varchar")!.type.should.be.equal("nvarchar"); // alias
         table!.findColumnByName("nvarchar")!.type.should.be.equal("nvarchar");
-        table!.findColumnByName("alphanum")!.type.should.be.equal("alphanum");
-        table!.findColumnByName("shorttext")!.type.should.be.equal("shorttext");
         table!.findColumnByName("dateObj")!.type.should.be.equal("date");
         table!.findColumnByName("date")!.type.should.be.equal("date");
         table!.findColumnByName("timeObj")!.type.should.be.equal("time");
@@ -122,7 +116,7 @@ describe("database schema > column types > sap", () => {
         table!.findColumnByName("timestamp")!.type.should.be.equal("timestamp");
         table!.findColumnByName("seconddate")!.type.should.be.equal("seconddate");
         table!.findColumnByName("blob")!.type.should.be.equal("blob");
-        table!.findColumnByName("clob")!.type.should.be.equal("clob");
+        table!.findColumnByName("clob")!.type.should.be.equal("nclob"); // alias
         table!.findColumnByName("nclob")!.type.should.be.equal("nclob");
         table!.findColumnByName("boolean")!.type.should.be.equal("boolean");
         table!.findColumnByName("varbinary")!.type.should.be.equal("varbinary");
@@ -142,8 +136,6 @@ describe("database schema > column types > sap", () => {
         post.decimal = "70.000";
         post.varchar = "This is varchar";
         post.nvarchar = "This is nvarchar";
-        post.alphanum = "This is alphanum";
-        post.shorttext = "This is shorttext";
         await postRepository.save(post);
 
         const loadedPost = (await postRepository.findOne(1))!;
@@ -152,8 +144,6 @@ describe("database schema > column types > sap", () => {
         loadedPost.decimal.should.be.equal(post.decimal);
         loadedPost.varchar.should.be.equal(post.varchar);
         loadedPost.nvarchar.should.be.equal(post.nvarchar);
-        loadedPost.alphanum.should.be.equal(post.alphanum);
-        loadedPost.shorttext.should.be.equal(post.shorttext);
 
         table!.findColumnByName("id")!.type.should.be.equal("integer");
         table!.findColumnByName("dec")!.type.should.be.equal("decimal");
@@ -162,14 +152,10 @@ describe("database schema > column types > sap", () => {
         table!.findColumnByName("decimal")!.type.should.be.equal("decimal");
         table!.findColumnByName("decimal")!.precision!.should.be.equal(10);
         table!.findColumnByName("decimal")!.scale!.should.be.equal(3);
-        table!.findColumnByName("varchar")!.type.should.be.equal("varchar");
+        table!.findColumnByName("varchar")!.type.should.be.equal("nvarchar"); // alias
         table!.findColumnByName("varchar")!.length!.should.be.equal("50");
         table!.findColumnByName("nvarchar")!.type.should.be.equal("nvarchar");
         table!.findColumnByName("nvarchar")!.length!.should.be.equal("50");
-        table!.findColumnByName("alphanum")!.type.should.be.equal("alphanum");
-        table!.findColumnByName("alphanum")!.length!.should.be.equal("50");
-        table!.findColumnByName("shorttext")!.type.should.be.equal("shorttext");
-        table!.findColumnByName("shorttext")!.length!.should.be.equal("50");
 
     })));
 

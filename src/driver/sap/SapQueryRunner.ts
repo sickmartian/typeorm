@@ -1584,7 +1584,7 @@ export class SapQueryRunner extends BaseQueryRunner implements QueryRunner {
 
                     } else {
                         if (tableColumn.type === "char" || tableColumn.type === "nchar" || tableColumn.type === "varchar" ||
-                            tableColumn.type === "nvarchar" || tableColumn.type === "alphanum" || tableColumn.type === "shorttext") {
+                            tableColumn.type === "nvarchar") {
                             tableColumn.default = `'${dbColumn["DEFAULT_VALUE"]}'`;
                         } else if (tableColumn.type === "boolean") {
                             tableColumn.default = dbColumn["DEFAULT_VALUE"] === "1" ? "true" : "false";

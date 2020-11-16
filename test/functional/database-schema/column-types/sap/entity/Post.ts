@@ -64,13 +64,6 @@ export class Post {
     @Column("nvarchar")
     nvarchar: string;
 
-    @Column("alphanum")
-    alphanum: string;
-
-
-    @Column("shorttext")
-    shorttext: string;
-
     // -------------------------------------------------------------------------
     // Date Types
     // -------------------------------------------------------------------------
